@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="card">
+    <view class="stats">
+      <view class="stat">
+        <view class="stat-title">总工单</view>
+        <view class="stat-value stat-total">{{stats.total}}</view>
+      </view>
+      <view class="stat">
+        <view class="stat-title">待完成</view>
+        <view class="stat-value stat-pending">{{stats.pending}}</view>
+      </view>
+      <view class="stat">
+        <view class="stat-title">本月新增</view>
+        <view class="stat-value stat-month">{{stats.month}}</view>
+      </view>
+    </view>
+    <view class="row-center mt-16">
+      <button class="btn-primary" bindtap="onCreate">新建工单</button>
+    </view>
+  </view>
+  <view class="chip-group">
+    <block wx:for="{{statusRange}}" wx:key="*this">
+      <view class="chip {{statusIndex == index ? 'chip-active' : ''}}" bindtap="onStatusTap" data-index="{{index}}">
+        {{item}}
+      </view>
+    </block>
+  </view>
+  <block wx:if="{{items.length === 0}}">
+    <view class="card empty">暂无工单</view>
+  </block>
+  <block wx:for="{{items}}" wx:key="id">
+    <view class="card" bindtap="goDetail" data-id="{{item.id}}">
+      <view class="row-between">
+        <view class="row">
+          <view class="status-dot {{item.dotClass}}"></view>
+          <view class="title">{{item.title}}</view>
+        </view>
+        <view class="badge {{item.statusClass}}">{{item.status}}</view>
+      </view>
+      <view class="desc">描述：{{item.descPreview}}</view>
+      <view class="meta">优先级：{{item.priority}}</view>
+      <view class="meta">负责人：{{item.assignee || '未分配'}}</view>
+      
+      <view class="meta row">
+        <text>截止：{{item.dueDate || '未设置'}}</text>
+        <view wx:if="{{item.dueAlert}}" class="badge badge-warning ml-12">临近</view>
+      </view>
+      <view class="meta">更新：{{item.updatedText}}</view>
+    </view>
+  </block>
+  <button class="btn" bindtap="loadMore" wx:if="{{canLoadMore}}">加载更多</button>
+</view>

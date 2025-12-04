@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/list/index",
+    "pages/detail/index",
+    "pages/edit/index",
+    "pages/settings/index",
+    "pages/backup/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#40A9FF",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "工单管理",
+    "backgroundColor": "#F5F9FF",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2"
+}

@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="card">
+    <view class="fw-600 mb-12">容量信息</view>
+    <view>上限：{{limitKB}} KB</view>
+    <view>已用：{{usedKB}} KB</view>
+  </view>
+  <button class="btn" bindtap="refresh">刷新</button>
+</view>

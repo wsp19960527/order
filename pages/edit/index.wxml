@@ -1,0 +1,42 @@
+<view class="container">
+  <view class="card">
+    <view class="field">
+      <view class="field-label">标题</view>
+      <input class="input" value="{{title}}" bindinput="onInput" data-key="title" placeholder="请输入标题" />
+    </view>
+    <view class="field">
+      <view class="field-label">描述</view>
+      <textarea class="textarea" value="{{description}}" bindinput="onInput" data-key="description" placeholder="请输入描述" />
+    </view>
+    <view class="field">
+      <view class="field-label">优先级</view>
+      <picker mode="selector" range="{{priorities}}" value="{{priorityIndex}}" bindchange="onPriorityChange" class="picker">
+        <view>{{priority}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="field-label">状态</view>
+      <picker mode="selector" range="{{statusRange}}" value="{{statusIndex}}" bindchange="onStatusChange" class="picker">
+        <view>{{status}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <view class="field-label">负责人</view>
+      <input class="input" value="{{assignee}}" bindinput="onInput" data-key="assignee" placeholder="负责人" />
+    </view>
+    <view class="field">
+      <view class="field-label">截止日期</view>
+      <picker mode="date" value="{{dueDate}}" bindchange="onDueDateChange" class="picker">
+        <view class="picker-label {{!dueDate ? 'picker-placeholder' : ''}}">
+          {{dueDate || '请选择日期'}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="footer-space"></view>
+</view>
+<view class="footer-fixed">
+  <view class="footer-inner">
+    <button class="btn-primary btn-block" bindtap="save">保存</button>
+  </view>
+</view>

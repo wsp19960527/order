@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="card">
+    <view class="row-between">
+      <view class="row">
+        <view class="status-dot {{dotClass}}"></view>
+        <view class="title">{{ticket.title}}</view>
+      </view>
+      <view class="badge {{statusClass}}">{{ticket.status}}</view>
+    </view>
+    <view class="desc">描述：{{ticket.description}}</view>
+    <view class="meta">优先级：{{ticket.priority}}</view>
+    <view class="meta">负责人：{{ticket.assignee || '未分配'}}</view>
+    <view class="meta">截止日期：{{ticket.dueDate || '未设置'}}</view>
+    <view class="meta">更新：{{updatedText}}</view>
+  </view>
+  <view class="footer-space"></view>
+  <view class="footer-fixed">
+    <view class="footer-inner">
+      <view class="actions actions-equal">
+        <block wx:if="{{ticket.status === '待处理'}}">
+          <button class="btn" bindtap="setStatus" data-status="处理中">设为处理中</button>
+          <button class="btn-primary" bindtap="edit">编辑</button>
+          <button class="btn-danger" bindtap="remove">删除</button>
+        </block>
+        <block wx:elif="{{ticket.status === '处理中' || ticket.status === '延期'}}">
+          <button class="btn" bindtap="setStatus" data-status="已完成">设为已完成</button>
+          <button class="btn-danger" bindtap="remove">删除</button>
+        </block>
+        <block wx:elif="{{ticket.status === '已完成'}}">
+          <button class="btn-danger" bindtap="remove">删除</button>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

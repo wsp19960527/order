@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="field">
+    <view class="field-label">导出数据</view>
+    <textarea class="textarea h-300" value="{{exportText}}" disabled="true" />
+  </view>
+  <button class="btn" bindtap="doExport">生成导出文本</button>
+  <view class="field mt-24">
+    <view class="field-label">导入数据</view>
+    <textarea class="textarea h-300" value="{{importText}}" bindinput="onImportText" placeholder="粘贴导出文本" />
+  </view>
+  <button class="btn-primary" bindtap="doImport">导入</button>
+</view>
